@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Especialistas em Inteligência Artificial, oferecendo soluções inovadoras para otimização de processos empresariais. Conheça nossos serviços e entre em contato!">
+    <title>Ecommerce Techstore - Nossos Serviços</title>
+    <link rel="stylesheet" href="style/estilo.css">
+    <link rel="shortcut icon" href="images/logo.png" type="image/png">
+</head>
+
+<body>
+    <header class="container-cabecalho">
+        <img src="./images/logo.png" alt="Logo da empresa" title="produtos eletrônicos" class="logo">
+        <h3> Techstore</h3>
+        <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+            <span class="hamburger"></span>
+        </button>
+    </header>
+    <nav class="container-navegacao" id="nav-menu">
+        <img src="./images/icon ai.jpg" alt="Logo da empresa" class="menu-logo">
+        <ul class="nav-menu">
+            <li><a href="index.html">Quem somos</a></li>
+            <li><a href="servico.html">Serviços</a></li>
+            <li><a href="contatos.html">Contatos</a></li>
+            <li><a href="Faq.html">FAQ</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section class="container-servicos">
+            <h1>Nossos Serviços</h1>
+            <article class="servico-card">
+                <img src="images/fone de ouvido.jpg" alt="fone de ouvido" class="service-image">
+                <h3>Fones de ouvido</h3>
+                <ul>
+                    <li>Fones de ouvido de ótima qualidade e durabilidade..</li>
+                    <li>Melhor preço em relação aos competidores.</li>
+                    <li>Modelos premium de fones de ouvido e planejamento de dados eletrônicos.</li>
+                </ul>
+            </article>
+            <article class="servico-card">
+                <img src="images/celular.jpg" alt="celular" class="service-image">
+                <h3>Celular</h3>
+                <ul>
+                    <li>Celulares de alta qualidade e performance.</li>
+                    <li>Melhor preço em relação aos competidores.</li>
+                    <li> Modelos premium de celulares e planilhas de dados.</li>
+                </ul>
+            </article>
+            <article class="servico-card">
+                <img src="images/computador.png" alt="computadores profissionais" class="service-image">
+                <h3>Computadores</h3>
+                <ul>
+                    <li>Computadores de alta qualidade e performance.</li>
+                    <li>Melhor preço em relação aos competidores.</li>
+                    <li>Modelos premium de computadores e planilhas de dados.</li>
+                </ul>
+            </article>
+            <article class="servico-card">
+                <h3 class="Pay_Pal_container">Como posso gerar o link do pagamento?</h3>
+                <p>Para gerar o link do pagamento, você precisa acessar a página do Pay Pal e clicar em "Criar pagamento". Depois, você precisa preencher os dados do pagamento, como o valor, a data de vencimento e o cartão de débito ou crédito : <a href="https://www.paypal.com/ncp/payment/RAECRX5MSZH58" target="_blank">PayPal</a> .</p>
+            </div>
+            </article>
+        </section>
+        
+    </main>
+    <footer class="animate-footer">
+        Techstore &copy; 2025 | &reg; Todos os direitos reservados.
+    </footer>
+    <div class="chatbot-container">
+        <div id="chatbot-window">
+            <div class="chatbot-header">
+                <span>Assistente da nossa empresa</span>
+                <button id="close-chatbot">&times;</button>
+            </div>
+            <div class="chatbot-messages" id="chatbot-messages"></div>
+            <div class="chatbot-input">
+                <input type="text" id="user-input" placeholder="Digite 'Quem somos', 'Serviços' ou 'Contato'...">
+                <button id="send-message">Enviar</button>
+            </div>
+        </div>
+        <button id="chatbot-toggle" aria-label="Abrir chat">🤖</button>
+    </div>
+    <script src="./script/script.js"></script>
+</body>
+
+</html>
