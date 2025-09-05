@@ -12,7 +12,6 @@ closeMenuBtn.addEventListener("click", () => {
   menuToggle.classList.remove("active");
 });
 
-// Animações on Scroll
 const animateElements = document.querySelectorAll(".animate-on-scroll");
 
 const observer = new IntersectionObserver((entries) => {
@@ -81,18 +80,18 @@ function apiGetResponse(query) {
   const lowerQuery = query.toLowerCase();
 
   if (lowerQuery.includes("quem somos")) {
-    return "Somos especialistas em Inteligência Artificial (AI). Trabalhamos para encontrar soluções tecnologicamente inteligentes para todas as áreas empresariais.";
+    return "Somos especialistas em venda de produtos eletrônicos e de serviços tecnológicos. Trabalhamos para encontrar soluções tecnologicamente inteligentes para todas as áreas empresariais.";
   } else if (
     lowerQuery.includes("serviços") ||
     lowerQuery.includes("servicos") ||
     lowerQuery.includes("nossos serviços")
   ) {
-    return "Oferecemos soluções de Machine Learning, Visão Computacional e Processamento de Linguagem Natural.";
+    return "Oferecemos vendas de produtos eletrônicos e de serviços tecnológicos.";
   } else if (
     lowerQuery.includes("contato") ||
     lowerQuery.includes("contatos")
   ) {
-    return "Entre em contato via email: email@ia.com ou telefone: +55 71 91234-5678.";
+    return "Entre em contato via email: email@techstore.com ou telefone: +55 71 91234-5678.";
   } else {
     return 'Desculpe, não entendi. Tente "Quem somos", "Serviços" ou "Contato".';
   }
@@ -125,11 +124,3 @@ faqItems.forEach((clickedItem) => {
     clickedItem.classList.toggle("active");
   });
 });
-
-const botaoPayPal = document.getElementById('botaoPayPal');
-if (botaoPayPal) {
-  botaoPayPal.addEventListener('click', () => {
-    window.location.href = 'https://www.paypal.com/ncp/payment/RAECRX5MSZH58';
-  });
-}
-
