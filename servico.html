@@ -9,24 +9,27 @@
         content="Especialistas em produtos eletrônicos, oferecendo soluções inovadoras para otimização de processos empresariais. Conheça nossos serviços e entre em contato!">
     <title>Ecommerce Techstore - Nossos Serviços</title>
     <link rel="stylesheet" href="style/estilo.css">
-    <link rel="shortcut icon" href="images/logo.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
     <header class="container-cabecalho">
-        <img src="./images/logo.png" alt="Logo da empresa" title="Produtos eletrônicos" class="logo">
-        <h3>Techstore</h3>
         <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
             <span class="hamburger"></span>
         </button>
+        <img src="./images/logo.png" alt="Logo da empresa" title="Produtos eletrônicos" class="logo">
+        <h3>Techstore</h3>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Pesquisar produtos...">
+            <button id="search-btn"><i class="fas fa-search"></i></button>
+        </div>
         <button id="show-cart-btn" class="cart-icon" aria-label="Abrir carrinho">
             <i class="fas fa-shopping-cart"></i>
             <span id="cart-count" class="cart-count">0</span>
         </button>
     </header>
     <nav class="container-navegacao" id="nav-menu">
-        <img src="./images/icon ai.jpg" alt="Logo da empresa" class="menu-logo">
+        <button id="close-menu-btn" class="close-menu-btn" aria-label="Fechar menu">&times;</button>
         <ul class="nav-menu">
             <li><a href="index.html">Página principal</a></li>
             <li><a href="servico.html">Serviços</a></li>
@@ -38,7 +41,7 @@
     <main>
         <section class="container-servicos">
             <h1>Nossos Serviços</h1>
-            <article class="servico-card">
+            <article class="servico-card" data-name="Fones de Ouvido da JBL">
                 <img src="images/fone de ouvido.jpg" alt="Fone de ouvido" class="service-image">
                 <h3>Fones de Ouvido da JBL</h3>
                 <ul>
@@ -46,10 +49,10 @@
                     <li>Melhor preço em relação aos competidores.</li>
                     <li>Modelos premium de fones de ouvido e planejamento de dados eletrônicos.</li>
                 </ul>
-                <button class="add-to-cart" data-name="Fones de Ouvido" data-price="360.00">Adicionar ao Carrinho</button>
-                <button class="remove-to-cart" data-name="Fones de Ouvido">Remover do Carrinho</button>
+                <button class="add-to-cart" data-name="Fones de Ouvido da JBL" data-price="360.00">Adicionar ao Carrinho</button>
+                <button class="remove-to-cart" data-name="Fones de Ouvido da JBL">Remover do Carrinho</button>
             </article>
-            <article class="servico-card">
+            <article class="servico-card" data-name="Celular da Xiaomi">
                 <img src="images/celular.jpg" alt="Celular" class="service-image">
                 <h3>Celular da Xiaomi</h3>
                 <ul>
@@ -57,10 +60,10 @@
                     <li>Melhor preço em relação aos competidores.</li>
                     <li>Modelos premium de celulares e planilhas de dados.</li>
                 </ul>
-                <button class="add-to-cart" data-name="Celular" data-price="2500.00">Adicionar ao Carrinho</button>
-                <button class="remove-to-cart" data-name="Celular">Remover do Carrinho</button>
+                <button class="add-to-cart" data-name="Celular da Xiaomi" data-price="2500.00">Adicionar ao Carrinho</button>
+                <button class="remove-to-cart" data-name="Celular da Xiaomi">Remover do Carrinho</button>
             </article>
-            <article class="servico-card">
+            <article class="servico-card" data-name="Computador da Dell">
                 <img src="images/computador.png" alt="Computadores profissionais" class="service-image">
                 <h3>Computador da Dell</h3>
                 <ul>
@@ -68,8 +71,8 @@
                     <li>Melhor preço em relação aos competidores.</li>
                     <li>Modelos premium de PC's e planilhas de dados.</li>
                 </ul>
-                <button class="add-to-cart" data-name="Computadores" data-price="3500.00">Adicionar ao Carrinho</button>
-                <button class="remove-to-cart" data-name="Computadores">Remover do Carrinho</button>
+                <button class="add-to-cart" data-name="Computador da Dell" data-price="3500.00">Adicionar ao Carrinho</button>
+                <button class="remove-to-cart" data-name="Computador da Dell">Remover do Carrinho</button>
             </article>
         </section>
     </main>
@@ -90,87 +93,7 @@
     <footer class="animate-footer">
         Techstore &copy; 2025 | &reg; Todos os direitos reservados.
     </footer>
-
-    <script src="./Script/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
-    <script>
-        let cart = [];
-        const addToCartButtons = document.querySelectorAll('.add-to-cart');
-        const removeToCartButtons = document.querySelectorAll('.remove-to-cart');
-        const cartItemsElement = document.getElementById('cart-items');
-        const cartTotalPrice = document.getElementById('cart-total-price');
-        const cartCount = document.getElementById('cart-count');
-        const showCartBtn = document.getElementById('show-cart-btn');
-        const closeCartBtn = document.getElementById('close-cart-btn');
-        const checkoutBtn = document.getElementById('checkout-btn');
-        const qrcodeDiv = document.getElementById('qrcode-asaas'); 
-        const cartWindow = document.getElementById('cart-window');
-
-        addToCartButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const name = button.dataset.name;
-                const price = parseFloat(button.dataset.price);
-                const existingItem = cart.find(item => item.name === name);
-                if (existingItem) {
-                    existingItem.quantity += 1;
-                } else {
-                    cart.push({ name, price, quantity: 1 });
-                }
-                updateCart();
-            });
-        });
-
-        removeToCartButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const name = button.dataset.name;
-                const itemIndex = cart.findIndex(item => item.name === name);
-                if (itemIndex > -1) {
-                    cart[itemIndex].quantity -= 1;
-                    if (cart[itemIndex].quantity <= 0) {
-                        cart.splice(itemIndex, 1);
-                    }
-                    updateCart();
-                }
-            });
-        });
-
-        function updateCart() {
-            cartItemsElement.innerHTML = '';
-            let total = 0;
-            cart.forEach(item => {
-                const itemDiv = document.createElement('div');
-                itemDiv.textContent = `${item.name} - Qtd: ${item.quantity} - Total: R$ ${(item.price * item.quantity).toFixed(2)}`;
-                cartItemsElement.appendChild(itemDiv);
-                total += item.price * item.quantity;
-            });
-            cartTotalPrice.textContent = total.toFixed(2);
-            cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-        }
-
-        showCartBtn.addEventListener('click', () => {
-            cartWindow.classList.add('active');
-        });
-
-        closeCartBtn.addEventListener('click', () => {
-            cartWindow.classList.remove('active');
-            qrcodeDiv.innerHTML = ''; // Limpa o QR Code ao fechar
-        });
-
-        checkoutBtn.addEventListener('click', () => { 
-            let asaasURL = `https://www.asaas.com/c/hh9qc8usb4l00esn`;
-            qrcodeDiv.innerHTML = ''; 
-            const canvas = document.createElement('canvas');
-            
-            QRCode.toCanvas(canvas, asaasURL, { width: 200 }, function (error) {
-                if (error) {
-                    console.error(error);
-                    qrcodeDiv.innerHTML = 'Erro ao gerar QR Code.';
-                } else {
-                    qrcodeDiv.appendChild(canvas);
-                }
-            });
-        });
-    </script>
+    <script src="Script/script.js"></script>
 </body>
-
 </html>
