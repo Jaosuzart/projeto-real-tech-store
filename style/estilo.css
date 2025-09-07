@@ -30,8 +30,8 @@ main {
 }
 
 .logo {
-  height: 6vh;
-  max-width: 200px;
+  min-height: 40px;
+  max-width: 400px;
   z-index: 150;
   display: none;
 }
@@ -841,8 +841,9 @@ footer.animate-footer {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    max-width: 250px;
-    height: 6vh;
+    max-width: 700px;
+    height: 4vh;
+    border-radius: 2px;
   }
 
   .container-cabecalho {
@@ -864,9 +865,9 @@ footer.animate-footer {
     display: none;
   }
 
-  /* ✅ CORREÇÃO APLICADA AQUI */
+
   .cart-icon {
-    position: relative; /* Alterado de 'static' para 'relative' */
+    position: relative; 
     transform: none;
     margin-left: 20px;
   }
