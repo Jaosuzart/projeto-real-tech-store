@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', () => {
-            let asaasURL = `https://www.asaas.com/c/hh9qc8usb4l00esn`;
+            let asaasURL = `https://www.asaas.com/c/ufl4af1r158at163`;
             if (qrcodeDiv) {
                 qrcodeDiv.innerHTML = '';
                 const canvas = document.createElement('canvas');
@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+       
     }
 
     const menuToggle = document.getElementById("menu-toggle");
@@ -188,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (lowerQuery.includes("serviços") || lowerQuery.includes("servicos") || lowerQuery.includes("nossos serviços")) {
             return "Oferecemos vendas de produtos eletrônicos e de serviços tecnológicos.";
         } else if (lowerQuery.includes("contato") || lowerQuery.includes("contatos")) {
-            return "Entre em contato via email: [email@techstore.com](mailto:email@techstore.com) ou telefone: +55 71 91234-5678.";
+            return "Entre em contato via email: (email@techstore.com) ou telefone: +55 71 91234-5678.";
         } else {
             return 'Desculpe, não entendi. Tente "Quem somos", "Serviços" ou "Contato".';
         }

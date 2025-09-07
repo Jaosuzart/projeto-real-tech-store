@@ -654,15 +654,14 @@ footer.animate-footer {
   overflow: hidden;
   margin-top: 0;
   line-height: 1.5;
-  max-height: 0; /* Começa com altura 0 para animação */
+  max-height: 0; 
   opacity: 0;
   transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, margin-top 0.4s ease-in-out;
 }
 
-/* Quando o item está ativo, a resposta se expande */
 .faq-item.active .faq-answer {
   margin-top: 15px;
-  max-height: 500px; /* Um valor alto para permitir a expansão */
+  max-height: 500px; 
   opacity: 1;
 }
 
