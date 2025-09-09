@@ -1,17 +1,15 @@
+<!-- servico.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Especialistas em produtos eletrônicos, oferecendo soluções inovadoras para otimização de processos empresariais. Conheça nossos serviços e entre em contato!">
+    <meta name="description" content="Especialistas em produtos eletrônicos. Conheça nossos serviços.">
     <title>Ecommerce Techstore - Nossos Serviços</title>
     <link rel="stylesheet" href="style/estilo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
     <header class="container-cabecalho">
         <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
@@ -19,14 +17,13 @@
         </button>
         <img src="./images/logo.png" alt="Logo da empresa" title="Produtos eletrônicos" class="logo">
         <h3>Techstore</h3>
-        <div class="search-container">
-            <input type="text" id="search-input" placeholder="Pesquisar produtos...">
-            <button id="search-btn"><i class="fas fa-search"></i></button>
+        <div class="header-icons">
+            <button id="open-search-btn" class="search-icon-btn" aria-label="Abrir pesquisa"><i class="fas fa-search"></i></button>
+            <button id="show-cart-btn" class="cart-icon" aria-label="Abrir carrinho">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count" class="cart-count">0</span>
+            </button>
         </div>
-        <button id="show-cart-btn" class="cart-icon" aria-label="Abrir carrinho">
-            <i class="fas fa-shopping-cart"></i>
-            <span id="cart-count" class="cart-count">0</span>
-        </button>
     </header>
     <nav class="container-navegacao" id="nav-menu">
         <button id="close-menu-btn" class="close-menu-btn" aria-label="Fechar menu">&times;</button>
@@ -40,62 +37,65 @@
 
     <main>
         <section class="container-servicos">
-            <h1>Nossos Serviços</h1>
+            <h1>Nossos Produtos</h1>
             <article class="servico-card" data-name="Fones de Ouvido da JBL">
-                <img src="images/fone de ouvido.jpg" alt="Fone de ouvido" class="service-image">
+                <img src="images/fone de ouvido.jpg" alt="Fone de ouvido JBL" class="service-image">
                 <h3>Fone de Ouvido da JBL <span>ORIGINAL!</span></h3>
                 <ul>
-                    <li>Fones de ouvido de ótima qualidade e durabilidade E .</li>
+                    <li>Fones de ouvido de ótima qualidade e durabilidade.</li>
                     <li>Melhor preço em relação aos competidores.</li>
-                    <li>Modelos premium de fones de ouvido e planejamento de dados eletrônicos.</li>
+                    <li>Modelos premium de fones de ouvido.</li>
                 </ul>
                 <button class="add-to-cart" data-name="Fones de Ouvido da JBL" data-price="360.00">Adicionar ao Carrinho</button>
-                <button class="remove-to-cart" data-name="Fones de Ouvido da JBL">Remover do Carrinho</button>
+                <button class="remove-from-cart" data-name="Fones de Ouvido da JBL">Remover do Carrinho</button>
             </article>
-            <article class="servico-card" data-name="Celular da Xiaomi">
-                <img src="images/celular.jpg" alt="Celular" class="service-image">
+
+            <article class="servico-card out-of-stock" data-name="Celular da Xiaomi">
+                <div class="stock-overlay"><span>Sem Estoque</span></div>
+                <img src="images/celular.jpg" alt="Celular Xiaomi" class="service-image">
                 <h3>Celular da Xiaomi</h3>
                 <ul>
                     <li>Celulares de alta qualidade e performance.</li>
                     <li>Melhor preço em relação aos competidores.</li>
-                    <li>Modelos premium de celulares e planilhas de dados.</li>
-                    <li>Produto indisponível</li>
+                    <li>Modelos premium de celulares.</li>
                 </ul>
-                <button class="add-to-cart" data-name="Celular da Xiaomi" data-price="2500.00" >Adicionar ao Carrinho</button>
-                <button class="remove-to-cart" data-name="Celular da Xiaomi">Remover do Carrinho</button>
+                <button class="add-to-cart" data-name="Celular da Xiaomi" data-price="2500.00" disabled>Adicionar ao Carrinho</button>
+                <button class="remove-from-cart" data-name="Celular da Xiaomi" disabled>Remover do Carrinho</button>
             </article>
-            <article class="servico-card" data-name="Computador da Dell">
-                <img src="images/computador.png" alt="Computadores profissionais" class="service-image">
+
+            <article class="servico-card out-of-stock" data-name="Computador da Dell">
+                <div class="stock-overlay"><span>Sem Estoque</span></div>
+                <img src="images/computador.png" alt="Computador Dell" class="service-image">
                 <h3>Computador da Dell</h3>
                 <ul>
                     <li>Computador de alta qualidade e performance.</li>
                     <li>Melhor preço em relação aos competidores.</li>
                     <li>Modelos premium de PC.</li>
-                    <li>Produto indisponível</li>
                 </ul>
-                <button class="add-to-cart" data-name="Computador da Dell" data-price="3500.00">Adicionar ao Carrinho</button>
-                <button class="remove-to-cart" data-name="Computador da Dell">Remover do Carrinho</button>
+                <button class="add-to-cart" data-name="Computador da Dell" data-price="3500.00" disabled>Adicionar ao Carrinho</button>
+                <button class="remove-from-cart" data-name="Computador da Dell" disabled>Remover do Carrinho</button>
             </article>
         </section>
     </main>
-
-    <div id="cart-window" class="cart-window">
-        <div class="cart-header">
-            <h2>Carrinho de Compras</h2>
-            <button id="close-cart-btn" class="close-btn">X</button>
+    
+    <div id="search-modal" class="search-modal">
+        <button id="close-search-btn" class="close-search-btn" aria-label="Fechar pesquisa">&times;</button>
+        <div class="search-modal-content">
+            <input type="text" id="search-input-modal" placeholder="Pesquisar por fones de ouvido...">
+            <p>Disponível: Fones de ouvido</p>
         </div>
-        <div id="cart-items" class="cart-items"></div>
-        <div class="cart-total">
-            <p>Total: R$ <span id="cart-total-price">0.00</span></p>
-        </div>
-        <button id="checkout-btn" class="checkout-btn">Finalizar Pedido</button>
-        <div id="qrcode-asaas" class="qrcode-container"></div>
     </div>
 
+     <div id="cart-window"> <div class="cart-header">
+        <h2>Carrinho de Compras</h2>
+        <button id="close-cart-btn" class="close-btn">X</button>
+    </div>
+    <div id="cart-items"></div> <div class="cart-total"> Total: R$ <span id="cart-total-price">0.00</span>
+    </div>
+    <button id="checkout-btn">Finalizar Pedido</button> </div>
     <footer class="animate-footer">
         Techstore &copy; 2025 | &reg; Todos os direitos reservados.
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
     <script src="Script/script.js"></script>
 </body>
 </html>

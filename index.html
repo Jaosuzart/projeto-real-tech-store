@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Especialistas em produtos eletrônicos, oferecendo soluções inovadoras para otimização de processos empresariais. Conheça nossos serviços e entre em contato!">
+    <meta name="description" content="Especialistas em produtos produtos eletrônicos, oferecendo soluções inovadoras para otimização de processos empresariais. Conheça nossos serviços e entre em contato!">
     <title>Ecommerce Techstore</title>
     <link rel="stylesheet" href="style/estilo.css">
     <link rel="shortcut icon" href="images/logo.png" type="image/png">
@@ -17,28 +17,29 @@
         </button>
         <img src="images/logo.png" alt="logo da empresa" title="eletrônicos" class="logo">
         <h3>Techstore</h3>
-        <div class="search-container">
-            <input type="text" id="search-input" placeholder="Pesquisar produtos...">
-            <button id="search-btn"><i class="fas fa-search"></i></button>
+        <div class="header-icons">
+            <button id="open-search-btn" class="search-icon-btn" aria-label="Abrir pesquisa"><i class="fas fa-search"></i></button>
+            <button id="show-cart-btn" class="cart-icon" aria-label="Abrir carrinho">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count" class="cart-count">0</span>
+            </button>
         </div>
-        <button id="show-cart-btn" class="cart-icon" aria-label="Abrir carrinho">
-            <i class="fas fa-shopping-cart"></i>
-            <span id="cart-count" class="cart-count">0</span>
-        </button>
     </header>
+
     <nav class="container-navegacao" id="nav-menu">
         <button id="close-menu-btn" class="close-menu-btn" aria-label="Fechar menu">&times;</button>
         <ul class="nav-menu">
-            <li><a href="index.html">Página principal</a></li>
+            <li><a href="index.html">Página Principal</a></li>
             <li><a href="servico.html">Serviços</a></li>
             <li><a href="contatos.html">Contatos</a></li>
             <li><a href="Faq.html">FAQ</a></li>
         </ul>
     </nav>
+
     <main>
         <section class="container-quem-somos">
             <article class="servico animate-on-scroll">
-                <img src="images/logo.png" class="icone" alt="Inteligência Artificial">
+                <img src="images/logo.png" class="icone" alt="Ícone da Techstore">
                 <p class="servico-texto">
                     Somos especialistas em <span class="servico-texto-realce">venda de produtos eletrônicos</span><br>
                     Trabalhamos para encontrar soluções tecnologicamente inteligentes para todas as áreas empresariais.
@@ -51,109 +52,133 @@
                 </p>
             </article>
             <article class="servico animate-on-scroll">
-                <img src="images/colaboradores.png" class="icone" alt="colaboradores mais experientes">
+                <img src="images/colaboradores.png" class="icone" alt="Colaboradores experientes">
                 <p class="servico-texto">
                     Os nossos colaboradores são os técnicos mais experientes do mercado.
                 </p>
             </article>
         </section>
-        <section class="carousel-container">
-            <div class="carousel-track">
-                <div class="carousel-slide">
-                    <img src="images/cliente1.png" alt="Cliente 1" class="client-image">
-                    <blockquote class="testimonial">
-                        <p class="testimonial">"Tive sucesso no meu negócio!".</p>
-                        <cite class="testimonial">- João Silva</cite>
-                    </blockquote>
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/cliente2.png" alt="Cliente 2" class="client-image">
-                    <blockquote class="testimonial">
-                        <p class="testimonial">"Foi eficaz a equipe".</p>
-                        <cite class="testimonial">- Ana Carolina</cite>
-                    </blockquote>
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/cliente3.png" alt="Cliente 3" class="client-image">
-                    <blockquote class="testimonial">
-                        <p class="testimonial">"Experiência incrível"</p>
-                        <cite class="testimonial">- Pedro Santos</cite>
-                    </blockquote>
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/cliente4.png" alt="Cliente 4" class="client-image">
-                    <blockquote class="testimonial">
-                        <p class="testimonial">"Equipe fantástica"</p>
-                        <cite class="testimonial">- Pedro Oliveira</cite>
-                    </blockquote>
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/cliente6.png" alt="Cliente 6" class="client-image">
-                    <blockquote class="testimonial">
-                        <p class="testimonial">"Profissionais compromissados"</p>
-                        <cite class="testimonial">- João Gilberto</cite>
-                    </blockquote>
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/cliente7.png" alt="Cliente 7" class="client-image">
-                    <blockquote class="testimonial">
-                        <p class="testimonial">"Adoro o clima, bem agradável"</p>
-                        <cite class="testimonial">- João Silva</cite>
-                    </blockquote>
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/cliente8.png" alt="Cliente 8" class="client-image">
-                    <blockquote class="testimonial">
-                        <p class="testimonial">"Só tenho que agradecer."</p>
-                        <cite class="testimonial">- Carlos Gilberto</cite>
-                    </blockquote>
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/cliente9.png" alt="Cliente 9" class="client-image">
-                    <blockquote class="testimonial">
-                        <p class="testimonial">"Melhores serviços e melhor preço."</p>
-                        <cite class="testimonial">- Carlos Riberio</cite>
-                    </blockquote>
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/cliente10.png" alt="Cliente 10" class="client-image">
-                    <blockquote class="testimonial">
-                        <p class="testimonial">"Vocês são os mais qualificados."</p>
-                        <cite class="testimonial">- Santiago Costa</cite>
-                    </blockquote>
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/cliente11.jpg" alt="Cliente 11" class="client-image">
-                    <blockquote class="testimonial">
-                        <p class="testimonial">"O que preciso vocês dão conta."</p>
-                        <cite class="testimonial">- Ana Carolina</cite>
-                    </blockquote>
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/cliente12.png" alt="Cliente 12" class="client-image">
-                    <blockquote class="testimonial">
-                        <p class="testimonial">"Vocês são os melhores."</p>
-                        <cite class="testimonial">- Carlos Nobre</cite>
-                    </blockquote>
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/cliente13.png" alt="Cliente 13" class="client-image">
-                    <blockquote class="testimonial">
-                        <p class="testimonial">"O que eu preciso, fico satisfeito."</p>
-                        <cite class="testimonial">- Carlos Nobrega</cite>
-                    </blockquote>
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/cliente14.png" alt="Cliente 14" class="client-image">
-                    <blockquote class="testimonial">
-                        <p class="testimonial">"Melhor automação para minha empresa!"</p>
-                        <cite class="testimonial">- Carlos Augusto</cite>
-                    </blockquote>
+
+        <section class="container-mais-vendidos">
+            <h2>Nosso Produto Mais Vendido</h2>
+            <div id="mais-vendidos-wrapper">
+                <div class="best-seller-card">
+                    <img src="images/best-seller.jpg" alt="Produto Mais Vendido" class="best-seller-image">
+                    <h3 class="best-seller-title">Fone de Ouvido Bluetooth</h3>
+                    <p class="best-seller-sales">Mais de 500 unidades vendidas!</p>
+                    <button class="best-seller-button">Comprar Agora</button>
                 </div>
             </div>
-            <button class="carousel-prev">←</button>
-            <button class="carousel-next">→</button>
         </section>
+
+        <section class="carousel-section">
+            <h2>O que nossos clientes dizem</h2>
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="carousel-slide">
+                        <img src="images/cliente1.png" alt="Cliente 1" class="client-image">
+                        <blockquote class="testimonial">
+                            <p>"Tive sucesso no meu negócio!".</p>
+                            <cite>- João Silva</cite>
+                        </blockquote>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/cliente2.png" alt="Cliente 2" class="client-image">
+                        <blockquote class="testimonial">
+                            <p>"Foi eficaz a equipe".</p>
+                            <cite>- Ana Carolina</cite>
+                        </blockquote>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/cliente3.png" alt="Cliente 3" class="client-image">
+                        <blockquote class="testimonial">
+                            <p>"Experiência incrível"</p>
+                            <cite>- Pedro Santos</cite>
+                        </blockquote>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/cliente4.png" alt="Cliente 4" class="client-image">
+                        <blockquote class="testimonial">
+                            <p>"Gostei de cada produto que comprei"</p>
+                            <cite>- José Santos</cite>
+                        </blockquote>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/cliente5.png" alt="Cliente 5" class="client-image">
+                        <blockquote class="testimonial">
+                            <p>"Cada produto que comprei foi muito bom"</p>
+                            <cite>- José Ferreira</cite>
+                        </blockquote>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/cliente6.png" alt="Cliente 6" class="client-image">
+                        <blockquote class="testimonial">
+                            <p>"Equipe muito qualificada"</p>
+                            <cite>- Pedro Oliveira</cite>
+                        </blockquote>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/cliente7.png" alt="Cliente 7" class="client-image">
+                        <blockquote class="testimonial">
+                            <p>"Ótima localização"</p>
+                            <cite>- André Ferreira</cite>
+                        </blockquote>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/cliente8.png" alt="Cliente 8" class="client-image">
+                        <blockquote class="testimonial">
+                            <p>"Transporte rápido e seguro"</p>
+                            <cite>- René Oliveira</cite>
+                        </blockquote>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/cliente9.png" alt="Cliente 9" class="client-image">
+                        <blockquote class="testimonial">
+                            <p>"Ótimo ecommerce para compras de produtos eletrônicos"</p>
+                            <cite>- Victor Santos</cite>
+                        </blockquote>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/cliente10.png" alt="Cliente 10" class="client-image">
+                        <blockquote class="testimonial">
+                            <p>"Não tenho palavras para expressar minha agradecimento por tudo que vocês fazem"</p>
+                            <cite>- Mariana Oliveira</cite>
+                        </blockquote>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/cliente11.jpg" alt="Cliente 11" class="client-image">
+                        <blockquote class="testimonial">
+                            <p>"Só tenho que agradecer por vocês"</p>
+                            <cite>- João Silva</cite>
+                        </blockquote>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/cliente12.png" alt="Cliente 12" class="client-image">
+                        <blockquote class="testimonial">
+                            <p>"Produtos com melhores preços"</p>
+                            <cite>- João Gomes</cite>
+                        </blockquote>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/cliente13.png" alt="Cliente 13" class="client-image">
+                        <blockquote class="testimonial">
+                            <p>"Ótimo fone de ouvido e de qualidade"</p>
+                            <cite>- Pedro Santos</cite>
+                        </blockquote>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/cliente14.png" alt="Cliente 14" class="client-image">
+                        <blockquote class="testimonial">
+                            <p>"Ótimo fone de ouvido e de qualidade"</p>
+                            <cite>- Pedro Santos</cite>
+                        </blockquote>
+                    </div>
+                </div>
+                <button class="carousel-button prev">←</button>
+                <button class="carousel-button next">→</button>
+            </div>
+        </section>
+
         <section class="container-servicos-contactos animate-on-scroll">
             <h1>Obtenha mais informações na área de serviços e contacte-nos.</h1>
             <div class="botoes-servicos-contactos">
@@ -162,36 +187,22 @@
             </div>
         </section>
     </main>
+    
+    <div id="search-modal" class="search-modal">
+        <button id="close-search-btn" class="close-search-btn" aria-label="Fechar pesquisa">&times;</button>
+        <div class="search-modal-content">
+            <input type="text" id="search-input-modal" placeholder="Pesquisar por fones de ouvido...">
+            <p>Disponível: Fones de ouvido</p>
+        </div>
+    </div>
+    
+   
+    
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+    <script src="Script/script.js"></script>
+    
     <footer class="animate-footer">
         Techstore &copy; 2025 | &reg; Todos os direitos reservados.
     </footer>
-    <div class="chatbot-container">
-        <div id="chatbot-window">
-            <div class="chatbot-header">
-                <span>Assistente da empresa</span>
-                <button id="close-chatbot">&times;</button>
-            </div>
-            <div class="chatbot-messages" id="chatbot-messages"></div>
-            <div class="chatbot-input">
-                <input type="text" id="user-input" placeholder="Digite 'Quem somos', 'Serviços' ou 'Contato'...">
-                <button id="send-message">Enviar</button>
-            </div>
-        </div>
-        <button id="chatbot-toggle" aria-label="Abrir chat">🤖</button>
-    </div>
-    <div id="cart-window" class="cart-window">
-        <div class="cart-header">
-            <h2>Carrinho de Compras</h2>
-            <button id="close-cart-btn" class="close-btn">X</button>
-        </div>
-        <div id="cart-items" class="cart-items"></div>
-        <div class="cart-total">
-            <p>Total: R$ <span id="cart-total-price">0.00</span></p>
-        </div>
-        <button id="checkout-btn" class="checkout-btn">Finalizar Pedido</button>
-        <div id="qrcode-asaas" class="qrcode-container"></div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
-    <script src="Script/script.js"></script>
 </body>
 </html>
