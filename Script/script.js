@@ -134,15 +134,34 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-if (checkoutBtn) {
-    checkoutBtn.addEventListener("click", () => {
-        if (cart.length === 0) {
-            alert("Carrinho vazio!");
-            return;
-        }
-        window.location.href = "https://www.asaas.com/c/ufl4af1r158at163";
-    });
-}
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener("click", () => {
+            if (cart.length === 0) {
+                alert("Carrinho vazio!");
+                return;
+            }
+            
+            cartItems.style.display = 'none';
+            document.querySelector('.cart-total').style.display = 'none';
+            checkoutBtn.style.display = 'none';
+            
+            const paymentSection = document.getElementById('payment-section');
+            paymentSection.style.display = 'flex';
+            
+            const paymentTotal = document.getElementById('payment-total');
+            paymentTotal.textContent = cartTotalPrice.textContent;
+            
+            new QRCode(document.getElementById("qrcode"), {
+                text: "https://www.asaas.com/c/ufl4af1r158at163",
+                width: 200,
+                height: 200,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        });
+    }
+
     const vendas = {
         "Fones de Ouvido da JBL": 120,
         "Celular da Xiaomi": 80,

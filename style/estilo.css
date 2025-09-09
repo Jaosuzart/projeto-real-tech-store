@@ -435,7 +435,7 @@ li {
   font-weight: bold;
 }
 
-.add-to-cart, .remove-from-cart {
+.add-to-cart, .remove-from-cart, #checkout-btn {
   background-color: #007BFF;
   color: white;
   border: none;
@@ -447,11 +447,11 @@ li {
   transition: background-color 0.3s;
 }
 
-.add-to-cart:hover:not(:disabled), .remove-from-cart:hover:not(:disabled) {
+.add-to-cart:hover:not(:disabled), .remove-from-cart:hover:not(:disabled), #checkout-btn:hover:not(:disabled) {
   background-color: #0056b3;
 }
 
-.add-to-cart:disabled, .remove-from-cart:disabled {
+.add-to-cart:disabled, .remove-from-cart:disabled, #checkout-btn:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
@@ -609,7 +609,6 @@ button[type="submit"]:hover {
 .close-search-btn:hover {
   color: black;
 }
-/* Esta é a forma correta de estilizar o pop-up do carrinho */
 #cart-window {
   position: fixed;
   top: 50%;
@@ -674,29 +673,29 @@ button[type="submit"]:hover {
   margin-bottom: 20px;
   text-align: right;
   flex-shrink: 0;
-  
-
+}
+#payment-section {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-#checkout-btn {
+#qrcode {
+  width: 200px;
+  height: 200px;
+  margin: 15px auto;
+  border: 5px solid #f0f0f0;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+}
+
+#qrcode img {
   width: 100%;
-  flex-shrink: 0;
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  padding: 12px 20px;
+  height: 100%;
   border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-#checkout-btn:hover {
-  background-color: #0056b3;
-}
-
-.qrcode-container {
-  text-align: center;
-  margin-top: 20px;
 }
 
 .animate-on-scroll {
