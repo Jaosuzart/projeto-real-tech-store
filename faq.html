@@ -1,37 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Perguntas frequentes sobre a Techstore e seus serviços." />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Perguntas frequentes sobre a Techstore e seus serviços.">
     <title>Ecommerce Techstore - FAQ</title>
-    <link rel="stylesheet" href="style/estilo.css" />
-    <link rel="shortcut icon" href="images/logo.png" type="image/png" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="style/estilo.css">
+    <link rel="shortcut icon" href="images/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
     <header class="container-cabecalho">
         <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
             <span class="hamburger"></span>
         </button>
-        <img src="./images/logo.png" alt="Logo da empresa" title="Techstore" class="logo" />
+        <img src="images/logo.png" alt="Logo da empresa" title="Techstore" class="logo">
         <h3>Techstore</h3>
-        <div class="header-icons">
-            <button id="open-search-btn" class="search-icon-btn" aria-label="Abrir pesquisa">
-                <i class="fas fa-search"></i>
-            </button>
-            <button id="show-cart-btn" class="cart-icon" aria-label="Abrir carrinho">
-                <i class="fas fa-shopping-cart"></i>
-                <span id="cart-count" class="cart-count">0</span>
-            </button>
-        </div>
     </header>
     <nav class="container-navegacao" id="nav-menu">
-        <button id="close-menu-btn" class="close-menu-btn" aria-label="Fechar menu">
-            &times;
-        </button>
+        <button id="close-menu-btn" class="close-menu-btn" aria-label="Fechar menu">&times;</button>
         <ul class="nav-menu">
             <li><a href="index.html">Página principal</a></li>
             <li><a href="servico.html">Serviços</a></li>
@@ -78,31 +66,32 @@
         </section>
     </main>
     <div id="search-modal" class="search-modal">
-        <button id="close-search-btn" class="close-search-btn" aria-label="Fechar pesquisa">
-            &times;
-        </button>
+        <button id="close-search-btn" class="close-search-btn" aria-label="Fechar pesquisa">&times;</button>
         <div class="search-modal-content">
-            <input type="text" id="search-input-modal" placeholder="Pesquisar por fones de ouvido..." />
+            <input type="text" id="search-input-modal" placeholder="Pesquisar por fones de ouvido...">
             <p>Disponível: Fones de ouvido</p>
         </div>
     </div>
 
-    <div id="cart-window" class="cart-window">
-        <div class="cart-header">
-            <h2>Carrinho de Compras</h2>
-            <button id="close-cart-btn" class="close-btn">&times;</button>
+    <div id="cookie-preferences-modal" class="cookie-modal">
+        <div class="cookie-content">
+            <img src="images/logo.png" alt="Logo" class="cookie-logo">
+            <h2>Gerenciar Preferências de Cookies</h2>
+            <p>Personalize sua experiência escolhendo os tipos de cookies que deseja permitir.</p>
+            <div class="cookie-options">
+                <label><input type="checkbox" id="essential-cookies" checked disabled> Cookies Essenciais (obrigatórios)</label>
+                <label><input type="checkbox" id="analytics-cookies"> Cookies de Análise</label>
+                <label><input type="checkbox" id="marketing-cookies"> Cookies de Marketing</label>
+            </div>
+            <button id="save-cookie-preferences">Salvar Preferências</button>
+            <button id="accept-all-cookies">Aceitar Todos</button>
         </div>
-        <div id="cart-items" class="cart-items"></div>
-        <div class="cart-total">
-            <p>Total: R$ <span id="cart-total-price">0.00</span></p>
-        </div>
-        <button id="checkout-btn" class="checkout-btn">Finalizar Pedido</button>
     </div>
 
     <footer class="animate-footer">
         Techstore &copy; 2025 | &reg; Todos os direitos reservados.
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
     <script src="Script/script.js"></script>
 </body>
-
 </html>

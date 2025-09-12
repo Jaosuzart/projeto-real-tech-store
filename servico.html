@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Especialistas em produtos eletrônicos. Conheça nossos serviços.">
     <title>Ecommerce Techstore - Nossos Serviços</title>
-    <link rel="stylesheet" href="style/estilo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style/estilo.css">
 </head>
+
 <body>
     <header class="container-cabecalho">
         <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
             <span class="hamburger"></span>
         </button>
-        <img src="./images/logo.png" alt="Logo da empresa" title="Produtos eletrônicos" class="logo">
+        <img src="images/logo.png" alt="Logo da empresa" title="Produtos eletrônicos" class="logo">
         <h3>Techstore</h3>
         <div class="header-icons">
-            <button id="open-search-btn" class="search-icon-btn" aria-label="Abrir pesquisa"><i class="fas fa-search"></i></button>
+            <button id="open-search-btn" class="search-icon-btn" aria-label="Abrir pesquisa"><i
+                    class="fas fa-search"></i></button>
             <button id="show-cart-btn" class="cart-icon" aria-label="Abrir carrinho">
                 <i class="fas fa-shopping-cart"></i>
                 <span id="cart-count" class="cart-count">0</span>
@@ -45,7 +48,8 @@
                     <li>Melhor preço em relação aos competidores.</li>
                     <li>Modelos premium de fones de ouvido.</li>
                 </ul>
-                <button class="add-to-cart" data-name="Fones de Ouvido da JBL" data-price="360.00">Adicionar ao Carrinho</button>
+                <button class="add-to-cart" data-name="Fones de Ouvido da JBL" data-price="360.00">Adicionar ao
+                    Carrinho</button>
                 <button class="remove-from-cart" data-name="Fones de Ouvido da JBL">Remover do Carrinho</button>
             </article>
 
@@ -58,7 +62,8 @@
                     <li>Melhor preço em relação aos competidores.</li>
                     <li>Modelos premium de celulares.</li>
                 </ul>
-                <button class="add-to-cart" data-name="Celular da Xiaomi" data-price="2500.00" disabled>Adicionar ao Carrinho</button>
+                <button class="add-to-cart" data-name="Celular da Xiaomi" data-price="2500.00" disabled>Adicionar ao
+                    Carrinho</button>
                 <button class="remove-from-cart" data-name="Celular da Xiaomi" disabled>Remover do Carrinho</button>
             </article>
 
@@ -71,12 +76,13 @@
                     <li>Melhor preço em relação aos competidores.</li>
                     <li>Modelos premium de PC.</li>
                 </ul>
-                <button class="add-to-cart" data-name="Computador da Dell" data-price="3500.00" disabled>Adicionar ao Carrinho</button>
+                <button class="add-to-cart" data-name="Computador da Dell" data-price="3500.00" disabled>Adicionar ao
+                    Carrinho</button>
                 <button class="remove-from-cart" data-name="Computador da Dell" disabled>Remover do Carrinho</button>
             </article>
         </section>
     </main>
-    
+
     <div id="search-modal" class="search-modal">
         <button id="close-search-btn" class="close-search-btn" aria-label="Fechar pesquisa">&times;</button>
         <div class="search-modal-content">
@@ -85,32 +91,44 @@
         </div>
     </div>
 
-    <div id="cart-window">
+    <div id="cart-window" class="cart-window">
         <div class="cart-header">
             <h2>Carrinho de Compras</h2>
-            <button id="close-cart-btn" class="close-btn">X</button>
+            <button id="close-cart-btn" class="close-btn">&times;</button>
         </div>
-        
-        <div id="cart-items"></div>
-        
+        <div id="cart-items" class="cart-items"></div>
         <div id="payment-section" style="display: none; text-align: center;">
             <p>Escaneie o QR Code para pagar com boleto ou cartão de crédito:</p>
             <div id="qrcode"></div>
             <p style="margin-top: 15px;"><strong>Total: R$ <span id="payment-total">0.00</span></strong></p>
         </div>
-        
         <div class="cart-total">
-            Total: R$ <span id="cart-total-price">0.00</span>
+            <p>Total: R$ <span id="cart-total-price">0.00</span></p>
         </div>
-        
-        <button id="checkout-btn">Finalizar Pedido</button>
+        <button id="checkout-btn" class="checkout-btn">Finalizar Pedido</button>
+    </div>
+
+    <div id="cookie-preferences-modal" class="cookie-modal">
+        <div class="cookie-content">
+            <img src="images/logo.png" alt="Logo" class="cookie-logo">
+            <h2>Gerenciar Preferências de Cookies</h2>
+            <p>Personalize sua experiência escolhendo os tipos de cookies que deseja permitir.</p>
+            <div class="cookie-options">
+                <label><input type="checkbox" id="essential-cookies" checked disabled> Cookies Essenciais
+                    (obrigatórios)</label>
+                <label><input type="checkbox" id="analytics-cookies"> Cookies de Análise</label>
+                <label><input type="checkbox" id="marketing-cookies"> Cookies de Marketing</label>
+            </div>
+            <button id="save-cookie-preferences">Salvar Preferências</button>
+            <button id="accept-all-cookies">Aceitar Todos</button>
+        </div>
     </div>
 
     <footer class="animate-footer">
         Techstore &copy; 2025 | &reg; Todos os direitos reservados.
     </footer>
-    
-    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
     <script src="Script/script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 </body>
+
 </html>

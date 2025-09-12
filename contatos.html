@@ -17,13 +17,6 @@
         </button>
         <img src="images/logo.png" alt="logo da empresa" title="eletrônicos" class="logo">
         <h3>Techstore</h3>
-        <div class="header-icons">
-            <button id="open-search-btn" class="search-icon-btn" aria-label="Abrir pesquisa"><i class="fas fa-search"></i></button>
-            <button id="show-cart-btn" class="cart-icon" aria-label="Abrir carrinho">
-                <i class="fas fa-shopping-cart"></i>
-                <span id="cart-count" class="cart-count">0</span>
-            </button>
-        </div>
     </header>
 
     <nav class="container-navegacao" id="nav-menu">
@@ -39,10 +32,7 @@
     <main>
         <section class="container-contatos animate-on-scroll">
             <h1>Entre em contato conosco:</h1>
-            <p>Email: <a href="mailto:contato@techstore.com">contato@techstore.com</a></p>
-            <p>Telefone: +55 71 91234-5678</p>
-            <p>Horário: Segunda a Sexta, 09:00 - 18:00</p>
-            <form action="mailto:joaomarcelosuzartcastro@gmail.com" method="post" enctype="text/plain" id="contact-form">
+            <form id="contact-form">
                 <label for="name">Nome:</label>
                 <input type="text" id="name" name="name" required>
 
@@ -65,20 +55,16 @@
         </div>
     </div>
 
-    <div id="cart-window" class="cart-window">
-        <div class="cart-header">
-            <h2>Carrinho de Compras</h2>
-            <button id="close-cart-btn" class="close-btn">X</button>
+    <div id="cookie-modal" class="cookie-modal">
+        <div class="cookie-content">
+            <img src="images/logo.png" alt="Logo" class="cookie-logo">
+            <h2>Bem-vindo à Techstore</h2>
+            <p>Usamos cookies para melhorar sua experiência. Ao continuar, você concorda com nossa política de cookies.</p>
+            <button id="accept-cookies">Aceitar</button>
+            <button id="reject-cookies">Rejeitar</button>
         </div>
-        <div id="cart-items" class="cart-items"></div>
-        <div class="cart-total">
-            <p>Total: R$ <span id="cart-total-price">0.00</span></p>
-        </div>
-        <button id="checkout-btn" class="checkout-btn">Finalizar Pedido</button>
-        <div id="qrcode-asaas" class="qrcode-container"></div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
     <script src="Script/script.js"></script>
 
     <footer class="animate-footer">
