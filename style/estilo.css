@@ -192,8 +192,8 @@ li {
 }
 
 .cookie-preferences-btn {
-    background-color: rgba(118, 118, 184, 0.973); /* Changed: Set background color to the same purple as "Ver serviços" and "Contatos" buttons */
-    color: white; /* Changed: Set text color to white, matching the font color of "Ver serviços" and "Contatos" buttons */
+    background-color: rgba(118, 118, 184, 0.973); 
+    color: white; 
     border: none;
     padding: 10px;
     margin: 20px auto;
@@ -205,7 +205,7 @@ li {
 }
 
 .cookie-preferences-btn:hover {
-    background-color: rgba(118, 118, 184, 0.973); /* Changed: Hover background remains the same purple for consistency */
+    background-color: rgba(118, 118, 184, 0.973); 
 }
 
 .container-quem-somos {
@@ -245,7 +245,7 @@ li {
     padding: 40px 20px;
     text-align: center;
     background-color: #f4faff;
-    color: rgb(113, 94, 167);
+    color: rgb(94, 52, 209);
     gap: 30px; 
 }
 
@@ -257,9 +257,8 @@ li {
 }
 
 .best-seller-card {
-    background-color: rgba(95, 95, 240, 0.973);
+    background-color:  #7b1fa2;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     padding: 25px;
     max-width: 320px;
     width: 100%;
@@ -267,9 +266,6 @@ li {
     transition: transform 0.3s ease;
 }
 
-.best-seller-card:hover {
-    transform: scale(1.05);
-}
 
 .best-seller-image {
     max-width: 150px;
@@ -293,7 +289,7 @@ li {
     background-color: rgb(255, 253, 253);
     padding: 12px 25px;
     border: none;
-    border-radius: 5px;
+    border-radius: .5em;
     font-weight: bold;
     text-transform: uppercase;
     cursor: pointer;
