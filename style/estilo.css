@@ -756,12 +756,12 @@ footer.animate-footer {
 }
 
 #save-cookie-preferences {
-    background-color: gray;
+    background-color: rgb(89, 89, 211);
     color: white;
 }
 
 #accept-all-cookies {
-    background-color: gray;
+    background-color: rgb(89, 89, 211);
     color: white;
 }
 
