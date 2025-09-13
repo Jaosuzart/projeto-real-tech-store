@@ -46,7 +46,9 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const updateCart = () => {
-        if (!elements.cartItems || !elements.cartCount || !elements.cartTotalPrice) return;
+        if (!elements.cartItems || !elements.cartCount || !elements.cartTotalPrice) { 
+            return;
+        }
 
         elements.cartItems.innerHTML = "";
         const total = cart.reduce((sum, item) => {
@@ -101,7 +103,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const name = button.dataset.name;
         const itemIndex = cart.findIndex(item => item.name === name);
 
-        if (itemIndex === -1) return;
+        if (itemIndex === -1)  {
+            return;
+        }
 
         cart[itemIndex].qty > 1 ? cart[itemIndex].qty-- : cart.splice(itemIndex, 1);
         updateCart();
@@ -135,7 +139,8 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const renderMaisVendidos = () => {
-        if (!elements.maisVendidosWrapper) return;
+        if (!elements.maisVendidosWrapper) { return;
+        }
 
         const [[nome, qtd]] = Object.entries(vendas).sort((a, b) => b[1] - a[1]);
         const imagemUrl = imagensProdutos[nome] || "images/default.png";
@@ -151,7 +156,8 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const handleCarousel = () => {
-        if (!elements.track) return;
+        if (!elements.track) { return;
+        }
 
         const slides = Array.from(elements.track.children);
         const nextButton = document.querySelector(".carousel-button.next");
@@ -160,7 +166,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const moveToSlide = (targetIndex) => {
             currentIndex = targetIndex % slides.length;
-            if (currentIndex < 0) currentIndex = slides.length - 1;
+            if (currentIndex < 0) {
+                currentIndex = slides.length - 1;
+            }
             elements.track.style.transform = `translateX(-${currentIndex * 100}%)`;
         };
 
@@ -173,7 +181,9 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".faq-item").forEach(item => {
             item.addEventListener("click", () => {
                 document.querySelectorAll(".faq-item").forEach(otherItem => {
-                    if (otherItem !== item) toggleClass(otherItem, "active", false);
+                    if (otherItem !== item) {
+                        toggleClass(otherItem, "active", false);
+                    }
                 });
                 toggleClass(item, "active");
             });
@@ -267,7 +277,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     marketing: true
                 }));
                 toggleDisplay(document.getElementById("cookie-preferences-modal"), false);
-                console.log("Todos os cookies aceitos!");
+                console.error("Todos os cookies aceitos!")
             });
         }
         const acceptCookies = document.getElementById("accept-cookies");
@@ -282,7 +292,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     marketing: true
                 }));
                 toggleDisplay(cookieModal, false);
-                console.log("Todos os cookies aceitos!");
+                console.error("Todos os cookies aceitos!");
             });
         }
 
@@ -294,7 +304,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     marketing: false
                 }));
                 toggleDisplay(cookieModal, false);
-                console.log("Cookies essenciais aceitos apenas!");
+                console.error("Cookies essenciais aceitos apenas!");
             });
         }
     };

@@ -15,10 +15,9 @@ main {
 }
 
 a {
-    color: #007BFF;
+    color: gray;
     text-decoration: none;
 }
-
 
 ul {
     list-style: none;
@@ -188,13 +187,13 @@ li {
 
 .nav-menu a:hover {
     background-color: #f0f0f0;
-    color: #007BFF;
+    color:#007BFF;
     text-decoration: none;
 }
 
 .cookie-preferences-btn {
-    background-color: #007BFF;
-    color: white;
+    background-color: rgba(118, 118, 184, 0.973); /* Changed: Set background color to the same purple as "Ver serviços" and "Contatos" buttons */
+    color: white; /* Changed: Set text color to white, matching the font color of "Ver serviços" and "Contatos" buttons */
     border: none;
     padding: 10px;
     margin: 20px auto;
@@ -206,7 +205,7 @@ li {
 }
 
 .cookie-preferences-btn:hover {
-    background-color: #0056b3;
+    background-color: rgba(118, 118, 184, 0.973); /* Changed: Hover background remains the same purple for consistency */
 }
 
 .container-quem-somos {
@@ -245,7 +244,9 @@ li {
 .container-mais-vendidos {
     padding: 40px 20px;
     text-align: center;
-    background-color: #f0f8ff;
+    background-color: #f4faff;
+    color: rgb(113, 94, 167);
+    gap: 30px; 
 }
 
 #mais-vendidos-wrapper {
@@ -256,7 +257,7 @@ li {
 }
 
 .best-seller-card {
-    background-color: #fff;
+    background-color: rgba(95, 95, 240, 0.973);
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     padding: 25px;
@@ -279,11 +280,12 @@ li {
     font-size: 1.5em;
     font-weight: bold;
     margin-bottom: 10px;
+    color: white; 
 }
 
 .best-seller-sales {
     font-size: 1.1em;
-    color: #666;
+    color: #fffdfdfa;
     margin-bottom: 20px;
 }
 
@@ -305,6 +307,10 @@ li {
 .carousel-section {
     padding: 40px 20px;
     background-color: #fff;
+}
+
+.carousel-section h2 { 
+    color: #7b1fa2;
 }
 
 .carousel-container {
@@ -459,7 +465,7 @@ li {
 .add-to-cart,
 .remove-from-cart,
 #checkout-btn {
-    background-color: #007BFF;
+    background-color: rgb(83, 83, 185);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -473,7 +479,7 @@ li {
 .add-to-cart:hover:not(:disabled),
 .remove-from-cart:hover:not(:disabled),
 #checkout-btn:hover:not(:disabled) {
-    background-color: #0056b3;
+    background-color: #0057b3e8;
 }
 
 .add-to-cart:disabled,
@@ -534,7 +540,7 @@ li {
 }
 
 .container-contatos button[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color:  rgba(118, 118, 184, 0.973);
 }
 
 .container-servicos-contactos {
@@ -546,7 +552,7 @@ li {
 }
 
 .botoes-servicos-contactos .botao {
-    background-color: #007BFF;
+    background-color: rgba(118, 118, 184, 0.973);
     color: white;
     border: none;
     padding: 12px 20px;
@@ -560,7 +566,7 @@ li {
 }
 
 .botoes-servicos-contactos .botao:hover {
-    background-color: #0056b3;
+    background-color: rgba(118, 118, 184, 0.973) ;
     transform: scale(1.05);
 }
 
@@ -754,12 +760,12 @@ footer.animate-footer {
 }
 
 #save-cookie-preferences {
-    background-color: #007BFF;
+    background-color: gray;
     color: white;
 }
 
 #accept-all-cookies {
-    background-color: #28a745;
+    background-color: gray;
     color: white;
 }
 
@@ -799,7 +805,6 @@ footer.animate-footer {
 }
 
 @media screen and (min-width: 1200px) {
-
     .menu-toggle,
     .close-menu-btn {
         display: none;
