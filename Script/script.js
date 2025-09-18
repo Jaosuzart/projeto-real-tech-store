@@ -222,7 +222,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert(`Mensagem enviada com sucesso para o email fictício: ${emailData.email}!`);
             } catch (error) {
                 console.error("Erro ao simular envio de mensagem:", error);
-                alert("Ocorreu um erro ao simular o envio da mensagem.");
             }
         });
     };
