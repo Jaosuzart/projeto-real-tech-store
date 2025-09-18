@@ -218,7 +218,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             try {
                 const emailData = await simulateEmailAPI();
-                console.log(`Mensagem enviada ficticiamente para: ${emailData.email}`);
+                console.error(`Mensagem enviada ficticiamente para: ${emailData.email}`);
                 alert(`Mensagem enviada com sucesso para o email fictício: ${emailData.email}!`);
             } catch (error) {
                 console.error("Erro ao simular envio de mensagem:", error);
