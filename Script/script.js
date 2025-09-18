@@ -144,10 +144,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         form.addEventListener("submit", (e) => {
             if (!form.checkValidity()) {
-                alert("Por favor, preencha todos os campos corretamente.");
+                console.error("Por favor, preencha todos os campos corretamente.");
                 e.preventDefault();
             } else {
-                alert("Mensagem preparada para envio! Clique em OK para abrir seu cliente de email.");
+                console.error("Mensagem preparada para envio! Clique em OK para abrir seu cliente de email.");
             }
         });
     };
@@ -165,17 +165,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     menuToggle?.addEventListener("click", () => {
         navMenu.classList.add("active");
-        overlay.classList.add("active");
+        overlay?.classList.add("active");
     });
 
     closeMenuBtn?.addEventListener("click", () => {
         navMenu.classList.remove("active");
-        overlay.classList.remove("active");
+        overlay?.classList.remove("active");
     });
 
     overlay?.addEventListener("click", () => {
         navMenu.classList.remove("active");
-        overlay.classList.remove("active");
+        overlay?.classList.remove("active");
     });
 
     const openSearchBtn = document.getElementById("open-search-btn");
