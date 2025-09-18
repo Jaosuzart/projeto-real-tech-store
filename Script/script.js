@@ -1,341 +1,287 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const stock = {
-        "Fones de Ouvido da JBL": 2,
-        "Celular da Xiaomi": 0,
-        "Computador da Dell": 0
-    };
+    const productData = [
+        { name: "Fones de Ouvido da JBL", image: "images/fone de ouvido.jpg", description: ["Fones de ouvido de ótima qualidade e durabilidade.", "Melhor preço em relação aos competidores.", "Modelos premium de fones de ouvido."], price: 360.00, stock: 2, sales: 120 },
+        { name: "Celular da Xiaomi", image: "images/celular.jpg", description: ["Celulares de alta qualidade e performance.", "Melhor preço em relação aos competidores.", "Modelos premium de celulares."], price: 2500.00, stock: 0, sales: 80 },
+        { name: "Computador da Dell", image: "images/computador.png", description: ["Computador de alta qualidade e performance.", "Melhor preço em relação aos competidores.", "Modelos premium de PC."], price: 3500.00, stock: 0, sales: 45 }
+    ];
 
-    const vendas = {
-        "Fones de Ouvido da JBL": 120,
-        "Celular da Xiaomi": 80,
-        "Computador da Dell": 45
-    };
+    const formFields = [
+        { type: 'text', id: 'name', label: 'Nome:', required: true },
+        { type: 'email', id: 'email', label: 'Digite seu email válido:', required: true, placeholder: 'seu.email@exemplo.com' },
+        { type: 'textarea', id: 'message', label: 'Mensagem:', required: true }
+    ];
 
-    const imagensProdutos = {
-        "Fones de Ouvido da JBL": "images/fone de ouvido.jpg",
-        "Celular da Xiaomi": "images/celular.jpg",
-        "Computador da Dell": "images/computador.png"
-    };
-
+    let stock = Object.fromEntries(productData.map(p => [p.name, p.stock]));
     let cart = [];
 
-    const elements = {
-        cartItems: document.getElementById("cart-items"),
-        cartCount: document.getElementById("cart-count"),
-        cartTotalPrice: document.getElementById("cart-total-price"),
-        menuToggle: document.getElementById("menu-toggle"),
-        navMenu: document.getElementById("nav-menu"),
-        closeMenuBtn: document.getElementById("close-menu-btn"),
-        openSearchBtn: document.getElementById("open-search-btn"),
-        searchModal: document.getElementById("search-modal"),
-        closeSearchBtn: document.getElementById("close-search-btn"),
-        searchInput: document.getElementById("search-input-modal"),
-        cartBtn: document.getElementById("show-cart-btn"),
-        cartWindow: document.getElementById("cart-window"),
-        closeCartBtn: document.getElementById("close-cart-btn"),
-        checkoutBtn: document.getElementById("checkout-btn"),
-        paymentSection: document.getElementById("payment-section"),
-        paymentTotal: document.getElementById("payment-total"),
-        qrcode: document.getElementById("qrcode"),
-        maisVendidosWrapper: document.getElementById("mais-vendidos-wrapper"),
-        track: document.querySelector(".carousel-track"),
-        cookiePreferencesBtn: document.getElementById("cookie-preferences-btn"),
-        cookiePreferencesModal: document.getElementById("cookie-preferences-modal"),
-        saveCookiePreferences: document.getElementById("save-cookie-preferences"),
-        acceptAllCookies: document.getElementById("accept-all-cookies")
-    };
-
-    const updateCart = () => {
-        if (!elements.cartItems || !elements.cartCount || !elements.cartTotalPrice) { 
+    const renderBestSeller = (products) => {
+        const wrapper = document.getElementById("mais-vendidos-wrapper");
+        if (!wrapper) {
             return;
         }
 
-        elements.cartItems.innerHTML = "";
-        const total = cart.reduce((sum, item) => {
-            const div = document.createElement("div");
-            div.textContent = `${item.name} - R$ ${item.price.toFixed(2)} (x${item.qty})`;
-            elements.cartItems.appendChild(div);
-            return sum + item.price * item.qty;
-        }, 0);
-
-        elements.cartCount.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
-        elements.cartTotalPrice.textContent = total.toFixed(2);
-    };
-
-    const toggleClass = (element, className, add = true) => 
-        element?.classList[add ? "add" : "remove"](className);
-
-    const toggleDisplay = (element, show = true) => 
-        element && (element.style.display = show ? "block" : "none");
-
-    const handleSearch = () => {
-        const query = elements.searchInput?.value.toLowerCase() || "";
-        const cards = document.querySelectorAll(".servico-card");
-
-        cards.length > 0
-            ? cards.forEach(card => {
-                card.style.display = card.dataset.name.toLowerCase().includes(query) ? "block" : "none";
-            })
-            : query.trim() && (window.location.href = `servico.html?search=${encodeURIComponent(query)}`);
-    };
-
-    const addToCart = (button) => {
-        const name = button.dataset.name;
-        const price = parseFloat(button.dataset.price);
-
-        if (stock[name] <= 0) {
-            console.error("Produto fora de estoque!");
-            return;
-        }
-
-        const existingItem = cart.find(item => item.name === name);
-        existingItem ? existingItem.qty++ : cart.push({ name, price, qty: 1 });
-        stock[name]--;
-        updateCart();
-
-        if (stock[name] === 0) {
-            button.disabled = true;
-            button.textContent = "Esgotado";
-        }
-    };
-
-    const removeFromCart = (button) => {
-        const name = button.dataset.name;
-        const itemIndex = cart.findIndex(item => item.name === name);
-
-        if (itemIndex === -1)  {
-            return;
-        }
-
-        cart[itemIndex].qty > 1 ? cart[itemIndex].qty-- : cart.splice(itemIndex, 1);
-        updateCart();
-    };
-
-    const handleCheckout = () => {
-        if (!cart.length) {
-            console.error("Carrinho vazio!");
-            return;
-        }
-
-        toggleDisplay(elements.cartItems, false);
-        toggleDisplay(document.querySelector(".cart-total"), false);
-        toggleDisplay(elements.checkoutBtn, false);
-        toggleDisplay(elements.paymentSection, true);
-
-        elements.paymentTotal.textContent = elements.cartTotalPrice.textContent;
-
-        if (elements.qrcode) {
-            new QRCode(elements.qrcode, {
-                text: "https://www.asaas.com/c/ufl4af1r158at163",
-                width: 200,
-                height: 200,
-                colorDark: "#000000",
-                colorLight: "#ffffff",
-                correctLevel: QRCode.CorrectLevel.H
-            });
-        } else {
-            console.error("Elemento QRCode não encontrado!");
-        }
-    };
-
-    const renderMaisVendidos = () => {
-        if (!elements.maisVendidosWrapper) { return;
-        }
-
-        const [[nome, qtd]] = Object.entries(vendas).sort((a, b) => b[1] - a[1]);
-        const imagemUrl = imagensProdutos[nome] || "images/default.png";
-
-        elements.maisVendidosWrapper.innerHTML = `
+        const topProduct = [...products].sort((a, b) => b.sales - a.sales)[0];
+        wrapper.innerHTML = `
             <div class="best-seller-card">
-                <img src="${imagemUrl}" alt="${nome}" class="best-seller-image">
-                <h3 class="best-seller-title">${nome}</h3>
-                <p class="best-seller-sales">${qtd} unidades vendidas</p>
+                <img src="${topProduct.image}" alt="${topProduct.name}" class="best-seller-image">
+                <h3 class="best-seller-title">${topProduct.name}</h3>
+                <p class="best-seller-sales">${topProduct.sales} unidades vendidas</p>
                 <button class="best-seller-button">Ver Produto</button>
             </div>
         `;
+        wrapper.addEventListener("click", (e) => e.target.classList.contains("best-seller-button") && (window.location.href = "servico.html"));
     };
 
-    const handleCarousel = () => {
-        if (!elements.track) { return;
+    const createProductCard = (product) => {
+        const card = document.createElement('article');
+        card.classList.add('servico-card');
+        card.dataset.name = product.name;
+        if (product.stock === 0) {
+            card.classList.add('out-of-stock');
         }
 
-        const slides = Array.from(elements.track.children);
+        card.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" class="service-image">
+            <h3>${product.name}${product.name.includes('JBL') ? ' <span>ORIGINAL!</span>' : ''}</h3>
+            <ul>${product.description.map(desc => `<li>${desc}</li>`).join('')}</ul>
+            <button class="add-to-cart" data-name="${product.name}" data-price="${product.price}" ${product.stock === 0 ? 'disabled' : ''}>${product.stock > 0 ? 'Adicionar ao Carrinho' : 'Esgotado'}</button>
+            <button class="remove-from-cart" data-name="${product.name}">Remover do Carrinho</button>
+            ${product.stock === 0 ? '<div class="stock-overlay"><span>Sem Estoque</span></div>' : ''}
+        `;
+        return card;
+    };
+
+    const renderProducts = (products) => {
+        const container = document.getElementById("products-container");
+        if (!container) {return;
+        }
+
+        container.append(...products.map(createProductCard));
+    };
+
+    const updateCart = () => {
+        const cartItems = document.getElementById("cart-items");
+        const cartCount = document.getElementById("cart-count");
+        const cartTotalPrice = document.getElementById("cart-total-price");
+
+        if (!cartItems) {return;
+        }
+
+        let total = 0;
+        cartItems.innerHTML = cart.map(item => {
+            total += item.price * item.qty;
+            return `<div>${item.name} - R$ ${item.price.toFixed(2)} (x${item.qty})</div>`;
+        }).join('');
+
+        if (cartCount) {cartCount.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+        }
+        if (cartTotalPrice) {cartTotalPrice.textContent = total.toFixed(2);
+        }
+    };
+
+    const handleCartAction = (e) => {
+        if (!e.target.matches('.add-to-cart, .remove-from-cart')) {return;
+        }
+
+        const name = e.target.dataset.name;
+        const isAdd = e.target.classList.contains('add-to-cart');
+        const price = parseFloat(e.target.dataset.price);
+        const item = cart.find(i => i.name === name);
+
+        if (isAdd) {
+            if (stock[name] <= 0) {return alert("Produto fora de estoque!");
+            }
+            if (item){ 
+                item.qty++;
+            }
+            else {
+                cart.push({ name, price, qty: 1 });
+        }
+            stock[name]--;
+            if (stock[name] === 0) {
+                e.target.disabled = true;
+                e.target.textContent = "Esgotado";
+            }
+        } else if (item) {
+            item.qty--;
+            if (item.qty === 0) { cart = cart.filter(i => i.name !== name);
+            }
+        }
+
+        updateCart();
+    };
+
+    const renderForm = (fields) => {
+        const container = document.getElementById("form-container");
+        if (!container) {return;
+        }
+
+        const form = document.createElement('form');
+        form.action = "mailto:joaomarcelosuzartcastro@gmail.com";
+        form.method = "post";
+        form.enctype = "text/plain";
+        form.id = "contact-form";
+
+        fields.forEach(field => {
+            const label = document.createElement('label');
+            label.htmlFor = field.id;
+            label.textContent = field.label;
+            form.appendChild(label);
+
+            const input = field.type === 'textarea' ? document.createElement('textarea') : Object.assign(document.createElement('input'), { type: field.type });
+            Object.assign(input, { id: field.id, name: field.id, required: field.required });
+            if (field.placeholder) {input.placeholder = field.placeholder;
+            }
+            form.appendChild(input);
+        });
+
+        const submit = document.createElement('button');
+        submit.type = "submit";
+        submit.textContent = "Enviar mensagem";
+        form.appendChild(submit);
+
+        container.appendChild(form);
+
+        form.addEventListener("submit", (e) => {
+            if (!form.checkValidity()) {
+                alert("Por favor, preencha todos os campos corretamente.");
+                e.preventDefault();
+            } else {
+                alert("Mensagem preparada para envio! Clique em OK para abrir seu cliente de email.");
+            }
+        });
+    };
+
+    renderBestSeller(productData);
+    renderProducts(productData);
+    renderForm(formFields);
+
+    document.addEventListener('click', handleCartAction);
+
+    const menuToggle = document.getElementById("menu-toggle");
+    const navMenu = document.getElementById("nav-menu");
+    const closeMenuBtn = document.getElementById("close-menu-btn");
+    const overlay = document.getElementById("overlay");
+
+    menuToggle?.addEventListener("click", () => {
+        navMenu.classList.add("active");
+        overlay.classList.add("active");
+    });
+
+    closeMenuBtn?.addEventListener("click", () => {
+        navMenu.classList.remove("active");
+        overlay.classList.remove("active");
+    });
+
+    overlay?.addEventListener("click", () => {
+        navMenu.classList.remove("active");
+        overlay.classList.remove("active");
+    });
+
+    const openSearchBtn = document.getElementById("open-search-btn");
+    const searchModal = document.getElementById("search-modal");
+    const closeSearchBtn = document.getElementById("close-search-btn");
+    const searchInput = document.getElementById("search-input-modal");
+
+    openSearchBtn?.addEventListener("click", () => searchModal.style.display = "block");
+    closeSearchBtn?.addEventListener("click", () => searchModal.style.display = "none");
+
+    searchInput?.addEventListener("keyup", () => {
+        const query = searchInput.value.toLowerCase().trim();
+        document.querySelectorAll(".servico-card").forEach(card => {
+            card.style.display = card.dataset.name.toLowerCase().includes(query) ? "block" : "none";
+        });
+        if (query && !document.querySelectorAll(".servico-card").length) {
+            window.location.href = `servico.html?search=${encodeURIComponent(query)}`;
+        }
+    });
+
+    const cartBtn = document.getElementById("show-cart-btn");
+    const cartWindow = document.getElementById("cart-window");
+    const closeCartBtn = document.getElementById("close-cart-btn");
+    const checkoutBtn = document.getElementById("checkout-btn");
+
+    cartBtn?.addEventListener("click", () => cartWindow.classList.add("active"));
+    closeCartBtn?.addEventListener("click", () => cartWindow.classList.remove("active"));
+
+    checkoutBtn?.addEventListener("click", () => {
+        if (!cart.length) {
+            return alert("Carrinho vazio!");
+        }
+
+        document.getElementById('cart-items').style.display = 'none';
+        document.querySelector('.cart-total').style.display = 'none';
+        checkoutBtn.style.display = 'none';
+
+        const paymentSection = document.getElementById('payment-section');
+        paymentSection.style.display = 'flex';
+
+        const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+        document.getElementById('payment-total').textContent = total.toFixed(2);
+
+        const fakeApiResponse = `https://api.placeholder.com/payment/${Date.now()}?amount=${total.toFixed(2)}&merchant=Techstore&method=PIX`;
+        new QRCode(document.getElementById("qrcode"), {
+            text: fakeApiResponse,
+            width: 200,
+            height: 200,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    });
+
+    const track = document.querySelector(".carousel-track");
+    if (track) {
+        const slides = Array.from(track.children);
         const nextButton = document.querySelector(".carousel-button.next");
         const prevButton = document.querySelector(".carousel-button.prev");
         let currentIndex = 0;
 
         const moveToSlide = (targetIndex) => {
-            currentIndex = targetIndex % slides.length;
-            if (currentIndex < 0) {
-                currentIndex = slides.length - 1;
-            }
-            elements.track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            currentIndex = (targetIndex + slides.length) % slides.length;
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
         };
 
         nextButton?.addEventListener("click", () => moveToSlide(currentIndex + 1));
         prevButton?.addEventListener("click", () => moveToSlide(currentIndex - 1));
         setInterval(() => moveToSlide(currentIndex + 1), 5000);
-    };
+    }
 
-    const handleFAQ = () => {
-        document.querySelectorAll(".faq-item").forEach(item => {
-            item.addEventListener("click", () => {
-                document.querySelectorAll(".faq-item").forEach(otherItem => {
-                    if (otherItem !== item) {
-                        toggleClass(otherItem, "active", false);
-                    }
-                });
-                toggleClass(item, "active");
-            });
+    document.querySelectorAll(".faq-item").forEach(item => {
+        item.addEventListener("click", () => {
+            document.querySelectorAll(".faq-item.active").forEach(other => other !== item && other.classList.remove("active"));
+            item.classList.toggle("active");
         });
-    };
+    });
 
-    const handleAnimations = () => {
-        const animatedElements = document.querySelectorAll(".animate-on-scroll");
-        const checkAnimations = () => {
-            animatedElements.forEach(el => {
-                if (el.getBoundingClientRect().top < window.innerHeight - 50) {
-                    toggleClass(el, "fade-in");
-                }
-            });
-        };
-        window.addEventListener("scroll", checkAnimations);
-        checkAnimations();
-    };
-
-    const handleContactForm = () => {
-        const contactForm = document.getElementById("contact-form");
-        contactForm?.addEventListener("submit", (e) => {
-            e.preventDefault();
-
-            if (!contactForm.checkValidity()) {
-                console.error("Por favor, preencha todos os campos corretamente.");
-                return;
-            }
-
-            const formData = new FormData(contactForm);
-            const object = Object.fromEntries(formData);
-            object.access_key = "2bf85802-afc6-4739-9b22-b3d1f75f3541"; 
-            const json = JSON.stringify(object);
-
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: json
-            })
-            .then(async (response) => {
-                let resJson = await response.json();
-                if (response.status === 200) {
-                console.error(resJson.message);
-                } else {
-                    console.error(resJson);
-                    console.error(resJson.message);
-                }
-            })
-            .catch(error => {
-                console.error(error);
-            })
-            .then(() => {
-                contactForm.reset();
-            });
-        });
-    };
-
-    const handleCookies = () => {
-        const showCookieModal = () => toggleDisplay(document.getElementById("cookie-preferences-modal"), true);
-
-        if (!localStorage.getItem("cookiesAccepted")) {
-            window.addEventListener("load", showCookieModal);
+    const animatedElements = document.querySelectorAll(".animate-on-scroll");
+    const checkAnimations = () => animatedElements.forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 50) {el.classList.add("fade-in");
         }
+    });
+    window.addEventListener("scroll", checkAnimations);
+    checkAnimations();
 
-        document.getElementById("cookie-preferences-btn")?.addEventListener("click", showCookieModal);
+    const cookieBtn = document.getElementById("cookie-preferences-btn");
+    const cookieModal = document.getElementById("cookie-preferences-modal");
+    const saveBtn = document.getElementById("save-cookie-preferences");
+    const acceptAllBtn = document.getElementById("accept-all-cookies");
 
-        const saveCookiePreferences = document.getElementById("save-cookie-preferences");
-        if (saveCookiePreferences) {
-            saveCookiePreferences.addEventListener("click", () => {
-                const analytics = document.getElementById("analytics-cookies").checked;
-                const marketing = document.getElementById("marketing-cookies").checked;
-                localStorage.setItem("cookiesAccepted", JSON.stringify({
-                    essential: true,
-                    analytics,
-                    marketing
-                }));
-                toggleDisplay(document.getElementById("cookie-preferences-modal"), false);
-                console.log("Preferências de cookies salvas!");
-            });
-        }
-
-        const acceptAllCookies = document.getElementById("accept-all-cookies");
-        if (acceptAllCookies) {
-            acceptAllCookies.addEventListener("click", () => {
-                localStorage.setItem("cookiesAccepted", JSON.stringify({
-                    essential: true,
-                    analytics: true,
-                    marketing: true
-                }));
-                toggleDisplay(document.getElementById("cookie-preferences-modal"), false);
-                console.error("Todos os cookies aceitos!")
-            });
-        }
-        const acceptCookies = document.getElementById("accept-cookies");
-        const rejectCookies = document.getElementById("reject-cookies");
-        const cookieModal = document.getElementById("cookie-modal");
-
-        if (acceptCookies) {
-            acceptCookies.addEventListener("click", () => {
-                localStorage.setItem("cookiesAccepted", JSON.stringify({
-                    essential: true,
-                    analytics: true,
-                    marketing: true
-                }));
-                toggleDisplay(cookieModal, false);
-                console.error("Todos os cookies aceitos!");
-            });
-        }
-
-        if (rejectCookies) {
-            rejectCookies.addEventListener("click", () => {
-                localStorage.setItem("cookiesAccepted", JSON.stringify({
-                    essential: true,
-                    analytics: false,
-                    marketing: false
-                }));
-                toggleDisplay(cookieModal, false);
-                console.error("Cookies essenciais aceitos apenas!");
-            });
-        }
-    };
-
-    elements.menuToggle?.addEventListener("click", () => toggleClass(elements.navMenu, "active"));
-    elements.closeMenuBtn?.addEventListener("click", () => toggleClass(elements.navMenu, "active", false));
-    elements.openSearchBtn?.addEventListener("click", () => toggleDisplay(elements.searchModal));
-    elements.closeSearchBtn?.addEventListener("click", () => toggleDisplay(elements.searchModal, false));
-    elements.searchInput?.addEventListener("keyup", handleSearch);
-    elements.cartBtn?.addEventListener("click", () => toggleClass(elements.cartWindow, "active"));
-    elements.closeCartBtn?.addEventListener("click", () => toggleClass(elements.cartWindow, "active", false));
-    elements.checkoutBtn?.addEventListener("click", handleCheckout);
-
-    document.querySelectorAll(".add-to-cart:not([disabled])").forEach(button => 
-        button.addEventListener("click", () => addToCart(button))
-    );
-
-    document.querySelectorAll(".remove-from-cart:not([disabled])").forEach(button => 
-        button.addEventListener("click", () => removeFromCart(button))
-    );
-
-    elements.maisVendidosWrapper?.addEventListener("click", (e) => {
-        if (e.target.classList.contains("best-seller-button")) {
-            window.location.href = "servico.html";
+    cookieBtn?.addEventListener("click", () => {
+        if (cookieModal) {
+            cookieModal.style.display = "block";
         }
     });
 
-    renderMaisVendidos();
-    handleCarousel();
-    handleFAQ();
-    handleAnimations();
-    handleContactForm();
-    handleCookies();
+    saveBtn?.addEventListener("click", () => {
+        if (cookieModal) { 
+            cookieModal.style.display = "none";
+        }
+    });
+
+    acceptAllBtn?.addEventListener("click", () => {
+        if (cookieModal) {
+            cookieModal.style.display = "none";
+        }
+    });
 });
